@@ -51,3 +51,17 @@ function checkAnswer(index) {
         displayQuestion();
     }
 }
+
+function endQuiz() {
+    clearInterval(interval);
+    showScreen("end-screen");
+    score = timer;
+}
+
+function saveScore() {
+    const initials = document.getElementById("initials").value;
+    const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+    highScores.push({ initials, score });
+    localStorage.setItem("highScores", JSON.stringify(highScores));
+    displayHighScores();
+}
