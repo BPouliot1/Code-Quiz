@@ -65,3 +65,17 @@ function saveScore() {
     localStorage.setItem("highScores", JSON.stringify(highScores));
     displayHighScores();
 }
+
+function displayHighScores() {
+    const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+    const highScoresList = document.getElementById("high-scores");
+    highScoresList.innerHTML = highScores.map(s => `<li>${s.initials} - ${s.score}</li>`).join("");
+}
+
+function showScreen(id) {
+    document.getElementById("start-screen").style.display = id === "start-screen" ? "block" : "none";
+    document.getElementById("quiz-screen").style.display = id === "quiz-screen" ? "block" : "none";
+    document.getElementById("end-screen").style.display = id === "end-screen" ? "block" : "none";
+}
+
+displayHighScores();
