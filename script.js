@@ -5,3 +5,11 @@ const questions = [
     { question: "The condition in an if/else statement is enclosed within ___", answers: ['quotes', 'parenthesis', 'curly brackets', 'square brackets'], correct: 1 },
 ];
 
+let timer = 60;
+let currentQuestionIndex = 0;
+let score = 0;
+let interval;
+
+document.getElementById("start-button").onclick = startQuiz;
+document.getElementById("save-score").onclick = saveScore;
+
