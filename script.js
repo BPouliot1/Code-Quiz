@@ -39,3 +39,15 @@ function displayQuestion() {
     });
 }
 
+function checkAnswer(index) {
+    const currentQuestion = questions[currentQuestionIndex];
+
+    if (index !== currentQuestion.correct) timer -= 10;
+    currentQuestionIndex++;
+
+    if (currentQuestionIndex >= questions.length || timer <= 0) {
+        endQuiz();
+    } else {
+        displayQuestion();
+    }
+}
