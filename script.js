@@ -54,6 +54,7 @@ function checkAnswer(index) {
 
 function endQuiz() {
     clearInterval(interval);
+    document.getElementById("final-score").innerText = score;
     showScreen("end-screen");
     score = timer;
 }
