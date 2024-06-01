@@ -24,3 +24,18 @@ function startQuiz() {
     displayQuestion();
 }
 
+function displayQuestion() {
+    const currentQuestion = questions[currentQuestionIndex];
+    document.getElementById("question").innerText = currentQuestion.question;
+
+    const answersList = document.getElementById("answers");
+    answersList.innerHTML = "";
+
+    currentQuestion.answers.forEach((answer, index) => {
+        const li = document.createElement("li");
+        li.innerText = answer;
+        li.onclick = () => checkAnswer(index);
+        answersList.appendChild(li);
+    });
+}
+
