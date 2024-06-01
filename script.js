@@ -41,16 +41,30 @@ function displayQuestion() {
 
 function checkAnswer(index) {
     const currentQuestion = questions[currentQuestionIndex];
+    const feedbackElement = document.getElementById("feedback");
 
-    if (index !== currentQuestion.correct) timer -= 10;
+    if (index === currentQuestion.correct) {
+        score += 10;
+        feedbackElement.innerText = "Correct!";
+        feedbackElement.style.color = "green"; 
+    } else {
+        timer -= 10;
+        feedbackElement.innerText = "Wrong!";
+        feedbackElement.style.color = "red";
+    }
+
+    setTimeout(() => {
+        feedbackElement.innerText = '';
+    }, 1000);
+
     currentQuestionIndex++;
-
     if (currentQuestionIndex >= questions.length || timer <= 0) {
         endQuiz();
     } else {
         displayQuestion();
     }
 }
+
 
 function endQuiz() {
     clearInterval(interval);
