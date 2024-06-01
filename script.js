@@ -13,3 +13,14 @@ let interval;
 document.getElementById("start-button").onclick = startQuiz;
 document.getElementById("save-score").onclick = saveScore;
 
+function startQuiz() {
+    interval = setInterval(() => {
+        timer--;
+        document.getElementById("timer").innerText = `Time: ${timer}`;
+        if (timer <= 0) endQuiz();
+    }, 1000);
+
+    showScreen("quiz-screen");
+    displayQuestion();
+}
+
